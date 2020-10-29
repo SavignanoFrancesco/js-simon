@@ -49,33 +49,37 @@ $(document).ready(function(){
             //numeri inseriti dall'utente
             var user_numbers = [];
             //continua a chiedere numero finche il totale dei due insiemi non è uguale
-            while(user_numbers.length != numbers.length) {
-                var user_number = parseInt(prompt('inserire un numero da 1 a 50: '));
+            setTimeout(function(){
+                while(user_numbers.length != numbers.length) {
+                    var user_number = parseInt(prompt('inserire un numero da 1 a 50: '));
 
                     user_numbers.push(user_number);
 
-            }
+                }
+            },1);
 
             console.log(numbers);
             console.log(user_numbers);
 
-            //scorre i numeri dell'utente e controlla se corrispondono ai numeri da indovinare
-            for (i = 0; i < user_numbers.length; i++) {
-                if(numbers.includes(user_numbers[i])){
-                    $('.ok-numbers').append('<div>' + user_numbers[i] + '</div>');
-                    //conta i numeri indovinati
-                    c++;
+            setTimeout(function(){
+                //scorre i numeri dell'utente e controlla se corrispondono ai numeri da indovinare
+                for (i = 0; i < user_numbers.length; i++) {
+                    if(numbers.includes(user_numbers[i])){
+                        $('.ok-numbers').append('<div>' + user_numbers[i] + '</div>');
+                        //conta i numeri indovinati
+                        c++;
+                    }
                 }
-            }
 
-            //se i numeri indovinati sono tanti quanti i numeri da indovinare, stampa vittoria
-            if (c == user_numbers.length) {
-                $('.external-box').append('<h1>Hai vinto!!</div>');
-            }else{
-                //altrimenti stampa i numeri indovinati e sconfitta
-                $('.external-box').append('<h1>Indovinati ' + c + ' su ' + numbers_quantity + '</div>');
-                $('.external-box').append('<h1>Hai perso..</div>');
-            }
+                //se i numeri indovinati sono tanti quanti i numeri da indovinare, stampa vittoria
+                if (c == user_numbers.length) {
+                    $('.external-box').append('<h1>Hai vinto!!</div>');
+                }else{
+                    //altrimenti stampa i numeri indovinati e sconfitta
+                    $('.external-box').append('<h1>Indovinati ' + c + ' su ' + numbers_quantity + '</div>');
+                    $('.external-box').append('<h1>Hai perso..</div>');
+                }
+            },1000);
 
         }
 
