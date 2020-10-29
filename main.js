@@ -48,8 +48,10 @@ $(document).ready(function(){
 
             //numeri inseriti dall'utente
             var user_numbers = [];
-            //continua a chiedere numero finche il totale dei due insiemi non è uguale
+
+            //aspetta che scompaiano i numeri prima di aprire il prompt
             setTimeout(function(){
+                //continua a chiedere numero finche il totale dei due insiemi non è uguale
                 while(user_numbers.length != numbers.length) {
                     var user_number = parseInt(prompt('inserire un numero da 1 a 50: '));
 
@@ -61,6 +63,7 @@ $(document).ready(function(){
             console.log(numbers);
             console.log(user_numbers);
 
+            //aspetta che compaia il prompt prima di procedere
             setTimeout(function(){
                 //scorre i numeri dell'utente e controlla se corrispondono ai numeri da indovinare
                 for (i = 0; i < user_numbers.length; i++) {
