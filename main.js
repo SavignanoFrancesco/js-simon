@@ -7,13 +7,12 @@ $(document).ready(function(){
     var max = 50;
 
     do{
-        console.log(numbers.length);
-        console.log(numbers);
+
         var rnd_number = getRndInteger(min,max);
 
-            numbers.push(rnd_number);
+        numbers.push(rnd_number);
 
-    }while(numbers.length <= numbers_quantity);
+    }while(numbers.length < numbers_quantity);
 
     for (var i = 0; i < numbers.length; i++) {
         $('.numbers').append('<div>' + numbers[i] + '</div>');
@@ -21,7 +20,7 @@ $(document).ready(function(){
 
 
 
-    var count = 30;
+    var count = 5;
 
     var countdown = setInterval(function() {
 
@@ -30,8 +29,24 @@ $(document).ready(function(){
         count--;
 
         if (count < 0) {
+
             clearInterval(countdown);
+
             $('.numbers').addClass('hide');
+
+            $('h2').text('Quali erano i numeri?');
+
+            var user_numbers = [];
+            while(user_numbers.length != numbers.length) {
+                var user_number = parseInt(prompt('inserire un numero da 1 a 50: '));
+
+                    user_numbers.push(user_number);
+
+            }
+            
+            console.log(numbers);
+            console.log(user_numbers);
+
         }
 
   }, 1000);
