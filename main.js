@@ -9,14 +9,17 @@ $(document).ready(function(){
     var c = 0;
     //minimo e massimo valore generato random
     var min = 1;
-    var max = 50;
+    var max = 100;
 
     do{
 
         //genera numero random
         var rnd_number = getRndInteger(min,max);
+        console.log(rnd_number);
         //mette il numero generato nell'array
-        numbers.push(rnd_number);
+        if(!numbers.includes(rnd_number)){
+            numbers.push(rnd_number);
+        }
 
     //fino al totale dei numeri da generare
     }while(numbers.length < numbers_quantity);
@@ -28,7 +31,7 @@ $(document).ready(function(){
 
 
     //il countdown parte da questo valore
-    var count = 5;
+    var count = 30;
 
     var countdown = setInterval(function() {
 
@@ -53,9 +56,17 @@ $(document).ready(function(){
             setTimeout(function(){
                 //continua a chiedere numero finche il totale dei due insiemi non è uguale
                 while(user_numbers.length != numbers.length) {
-                    var user_number = parseInt(prompt('inserire un numero da 1 a 50: '));
 
-                    user_numbers.push(user_number);
+                    var user_number = parseInt(prompt('inserire un numero da ' + min + ' a ' + max + ': '));
+                    console.log(user_number);
+
+                    //controllo se i numeri inseriti sono validi
+                    if (!isNaN(user_number) && !user_numbers.includes(user_number) && user_number >= min && user_number <= max ) {
+                        user_numbers.push(user_number);
+                    }else {
+                        alert('Inserimento sbagliato..');
+                    }
+
 
                 }
             },1);
